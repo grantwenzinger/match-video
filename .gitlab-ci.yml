@@ -1,0 +1,32 @@
+before_script:
+  - python --version
+  - make install-test
+
+stages:
+  - test
+
+unit_test_3_6:
+  stage: test
+  image: 'circleci/python:3.6'
+  script: make test-verbose
+
+unit_test_3_7:
+  stage: test
+  image: 'circleci/python:3.7'
+  script: make test-verbose
+
+unit_test_3_8:
+  stage: test
+  image: 'circleci/python:3.8'
+  script: make test-verbose
+
+unit_test_3_9:
+  stage: test
+  image: 'circleci/python:3.9'
+  script: make test-verbose
+  coverage: '/TOTAL.*\s+(\d+%)$/'
+
+unit_test_3_10:
+  stage: test
+  image: 'circleci/python:3.10'
+  script: make test-verbose
